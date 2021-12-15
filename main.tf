@@ -53,12 +53,12 @@ data "aws_security_group" "default" {
 resource "aws_network_interface" "foo" {
   subnet_id   = aws_subnet.default.id
   security_groups = [aws_security_group.default.id]
-
+/*
   attachment {
     instance = aws_instance.main.id
     device_index = 0
-
   }
+*/
 }
 
 # Instance creation
