@@ -17,7 +17,7 @@ provider "aws" {
 
 # Variable Declarations
 
-variable "vpc_id" "default" {
+variable "vpc_id" {
     type = string
     default = "vpc-d919cebf"
 }
