@@ -53,18 +53,12 @@ data "aws_security_group" "default" {
 resource "aws_network_interface" "foo" {
   subnet_id   = data.aws_subnet.default.id
   security_groups = [data.aws_security_group.default.id]
-/*
-  attachment {
-    instance = aws_instance.main.id
-    device_index = 0
-  }
-*/
 }
 
 # Instance creation
 
 resource "aws_instance" "main" {
-  ami           = ami-009726b835c24a3aa
+  ami           = "ami-009726b835c24a3aa"
   instance_type = "t2.micro"
 
   network_interface {
