@@ -9,7 +9,9 @@ terraform {
 
 # Configure the AWS Provider
 
-provider "aws" {}
+provider "aws" {
+  region = "us-west-1"
+}
 
 # Variable Declarations
 
