@@ -38,6 +38,7 @@ variable "security_group_id" {
 }
 variable "VMname" {
     type = string
+    default = "JakesUbuntu"
 }
 
 # Reference Existing Default VPC
@@ -56,6 +57,19 @@ data "aws_subnet" "default" {
 
 data "aws_security_group" "default" {
     id = var.security_group_id
+}
+
+# Reference Existing Key Pair
+
+data "aws_key_pair" "aws-TF-1" {
+  key_name = "aws-TF-1"
+  filter {
+    name   = "tag:Owner"
+    values = ["jisley"]
+  }
+  filter {
+    name = "tag:tool"
+    values = ["terraform"]
 }
 
 # Make NIC
@@ -77,6 +91,6 @@ resource "aws_instance" "main" {
   }
 
   tags = {
-    Name = "JakesUbuntu"
+    Name = var.VMname
   }
 }
