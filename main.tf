@@ -36,6 +36,9 @@ variable "security_group_id" {
     type = string
     default = "sg-947809dd"
 }
+variable "VMname" {
+    type = string
+}
 
 # Reference Existing Default VPC
 
