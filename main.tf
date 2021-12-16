@@ -38,7 +38,6 @@ variable "security_group_id" {
 }
 variable "VMname" {
     type = string
-    default = "JakesUbuntu"
 }
 
 # Reference Existing Default VPC
@@ -60,7 +59,7 @@ data "aws_security_group" "default" {
 }
 
 # Reference Existing Key Pair
-/*
+
 data "aws_key_pair" "aws-TF-1" {
   key_name = "aws-TF-1"
   filter {
@@ -71,7 +70,7 @@ data "aws_key_pair" "aws-TF-1" {
     name = "tag:tool"
     values = ["terraform"]
 }
-*/
+
 # Make NIC
 
 resource "aws_network_interface" "foo" {
