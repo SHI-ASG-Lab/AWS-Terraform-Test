@@ -111,5 +111,6 @@ output "private_ip" {
   value = aws_instance.main.private_ip
 }
 output "key_name" {
-  value = data.aws_key_pair.aws-TF-1.key_name
+#  value = data.aws_key_pair.aws-TF-1.key_name
+  value = aws_instance.main.key_name
 }
