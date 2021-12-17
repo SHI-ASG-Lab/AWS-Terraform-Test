@@ -25,6 +25,9 @@ variable "security_group_id" {
     type = string
     default = "sg-947809dd"
 }
+variable "VMname" {
+    type = string
+}
 
 # Reference Existing Default VPC
 
@@ -44,6 +47,19 @@ data "aws_security_group" "default" {
     id = var.security_group_id
 }
 
+# Reference Existing Key Pair
+
+data "aws_key_pair" "aws-TF-1" {
+  key_name = "aws-TF-1"
+  filter {
+    name   = "tag:Owner"
+    values = ["jisley"]
+  }
+  filter {
+    name = "tag:tool"
+    values = ["terraform"]
+}
+
 # Make NIC
 
 resource "aws_network_interface" "foo" {
@@ -61,8 +77,27 @@ resource "aws_instance" "main" {
     network_interface_id = aws_network_interface.foo.id
     device_index         = 0
   }
-
+  key_name = data.aws_key_pair.aws-TF-1.key_name
+  
   tags = {
-    Name = "JakesUbuntu"
+    Name = var.VMname
   }
+}
+
+# Outputs
+  
+output "VMname" {
+  value = var.VMname
+}
+output "public_ip" {
+  value = aws_instance.main.public_ip
+}
+output "public_dns" {
+  value = aws_instance.main.public_dns
+}
+output "private_ip" {
+  value = aws_instance.main.private_ip
+}
+output "key_name" {
+  value = data.aws_key_pair.aws-TF-1.key_name
 }
