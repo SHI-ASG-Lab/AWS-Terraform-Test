@@ -27,6 +27,7 @@ variable "security_group_id" {
 }
 variable "VMname" {
     type = string
+    default = "JakeUbuntuTest"
 }
 
 # Reference Existing Default VPC
