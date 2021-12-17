@@ -90,7 +90,7 @@ resource "aws_instance" "main" {
     device_index         = 0
   }
 #  key_name = data.aws_key_pair.aws-TF-1.key_name
-  key_name = "aws-TF-1"  
+#  key_name = "aws-TF-1"  
   tags = {
     Name = var.VMname
   }
