@@ -58,6 +58,7 @@ data "aws_key_pair" "aws-TF-1" {
   filter {
     name = "tag:tool"
     values = ["terraform"]
+  }
 }
 
 # Make NIC
