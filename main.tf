@@ -62,14 +62,7 @@ data "aws_security_group" "default" {
 
 data "aws_key_pair" "aws-TF-1" {
   key_name = "aws-TF-1"
-  filter {
-    name   = "tag:Owner"
-    values = ["jisley"]
-  }
-  filter {
-    name = "tag:tool"
-    values = ["terraform"]
-  }
+  key_id = "key-020ce8cd0da72e688"
 }
 
 # Make NIC
