@@ -59,7 +59,7 @@ data "aws_security_group" "default" {
 }
 
 # Reference Existing Key Pair
-/*
+
 data "aws_key_pair" "aws-TF-1" {
   key_name = "aws-TF-1"
   filter {
@@ -71,7 +71,7 @@ data "aws_key_pair" "aws-TF-1" {
     values = ["terraform"]
   }
 }
-*/
+
 # Make NIC
 
 resource "aws_network_interface" "foo" {
@@ -89,7 +89,8 @@ resource "aws_instance" "main" {
     network_interface_id = aws_network_interface.foo.id
     device_index         = 0
   }
-#  key_name = data.aws_key_pair.aws-TF-1.key_name
+
+  key_name = data.aws_key_pair.aws-TF-1.key_name
 #  key_name = "aws-TF-1"  
   tags = {
     Name = var.VMname
